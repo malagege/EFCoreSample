@@ -1,0 +1,36 @@
+## .NET gitignore
+
+# Build artifacts
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userprefs
+
+# Visual Studio files
+.vs/
+*.sln.docstates
+
+# Rider files
+.idea/
+
+# NuGet
+*.nupkg
+*.snupkg
+*.nuget/
+packages/
+
+# SQLite database files (auto-generated)
+*.db
+*.db-shm
+*.db-wal
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
