@@ -1,0 +1,49 @@
+@model EFCoreSample.Models.Post
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container mt-4">
+    <a asp-action="Posts" class="btn btn-outline-secondary mb-3">← 返回列表</a>
+    
+    <article>
+        <h1>@Model.Title</h1>
+        <div class="text-muted mb-3">
+            @if (Model.Blog?.Author != null)
+            {
+                <span>作者: @Model.Blog.Author.Name</span>
+                <span class="mx-2">|</span>
+            }
+            @if (Model.PublishedAt.HasValue)
+            {
+                <span>發佈: @Model.PublishedAt.Value.ToString("yyyy-MM-dd")</span>
+                <span class="mx-2">|</span>
+            }
+            <span>👁 @Model.ViewCount 次瀏覽</span>
+        </div>
+
+        @if (Model.Category != null)
+        {
+            <span class="badge bg-secondary mb-2">@Model.Category.Name</span>
+        }
+        @foreach (var tag in Model.Tags)
+        {
+            <span class="badge bg-light text-dark mb-2">@tag.Name</span>
+        }
+
+        <div class="mt-4">
+            <p>@Model.Content</p>
+        </div>
+
+        @if (Model.Metadata != null)
+        {
+            <div class="card mt-4 bg-light">
+                <div class="card-body">
+                    <h6>SEO 資訊</h6>
+                    <p><strong>SEO 標題:</strong> @Model.Metadata.SeoTitle</p>
+                    <p><strong>SEO 描述:</strong> @Model.Metadata.SeoDescription</p>
+                </div>
+            </div>
+        }
+    </article>
+</div>

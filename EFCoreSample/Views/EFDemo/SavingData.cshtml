@@ -1,0 +1,11 @@
+@{ViewData["Title"] = "資料儲存";}
+<div class="container mt-4">
+    <h2>3. 資料儲存 (Saving Data)</h2>
+    <a asp-action="Index" class="btn btn-outline-secondary mb-3">← 返回</a>
+    <div class="card">
+        <div class="card-header">操作結果</div>
+        <div class="card-body">
+            <ol>@foreach(var r in (List<string>)ViewBag.Results){<li>@r</li>}</ol>
+        </div>
+    </div>
+</div>

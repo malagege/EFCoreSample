@@ -1,0 +1,40 @@
+﻿@model List<EFCoreSample.Models.Blog>
+@{
+    ViewData["Title"] = "部落格列表";
+}
+
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col">
+            <h1>📚 EFCore 學習後台系統</h1>
+            <p class="text-muted">一個展示 EFCore 各種功能的範例專案</p>
+            <a href="/coreadmin" class="btn btn-primary">🔧 進入後台管理 (CoreAdmin)</a>
+            <a asp-controller="EFDemo" asp-action="Index" class="btn btn-secondary ms-2">📖 EFCore 功能展示</a>
+        </div>
+    </div>
+
+    <div class="row">
+        @foreach (var blog in Model)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between">
+                        <strong>@blog.Name</strong>
+                        <span class="badge bg-warning text-dark">⭐ @blog.Rating</span>
+                    </div>
+                    <div class="card-body">
+                        <p>@blog.Description</p>
+                        @if (blog.Author != null)
+                        {
+                            <small class="text-muted">作者: @blog.Author.Name</small>
+                        }
+                    </div>
+                    <div class="card-footer">
+                        <span class="badge bg-info">@blog.Posts.Count 篇文章</span>
+                        <a asp-controller="Home" asp-action="Posts" asp-route-blogId="@blog.Id" class="btn btn-sm btn-outline-primary ms-2">查看文章</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

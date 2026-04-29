@@ -1,0 +1,72 @@
+@model List<EFCoreSample.Models.Post>
+@{
+    ViewData["Title"] = "文章列表";
+    int total = ViewBag.Total;
+    int page = ViewBag.Page;
+    int pageSize = ViewBag.PageSize;
+    int totalPages = (int)Math.Ceiling((double)total / pageSize);
+}
+
+<div class="container mt-4">
+    <h2>文章列表</h2>
+    
+    <form method="get" class="row g-2 mb-4">
+        <div class="col-auto">
+            <input type="text" name="search" class="form-control" placeholder="搜尋..." value="@ViewBag.Search" />
+        </div>
+        <div class="col-auto">
+            <select name="categoryId" class="form-select">
+                <option value="">所有分類</option>
+                @foreach (var cat in (List<EFCoreSample.Models.Category>)ViewBag.Categories)
+                {
+                    <option value="@cat.Id" selected="@(ViewBag.CategoryId?.ToString() == cat.Id.ToString())">@cat.Name</option>
+                }
+            </select>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">搜尋</button>
+            <a asp-action="Posts" class="btn btn-outline-secondary">清除</a>
+        </div>
+    </form>
+
+    @foreach (var post in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5><a asp-action="PostDetail" asp-route-id="@post.Id">@post.Title</a></h5>
+                <p class="text-muted">@post.Summary</p>
+                <div>
+                    @if (post.Category != null)
+                    {
+                        <span class="badge bg-secondary">@post.Category.Name</span>
+                    }
+                    @foreach (var tag in post.Tags)
+                    {
+                        <span class="badge bg-light text-dark">@tag.Name</span>
+                    }
+                    <small class="text-muted ms-2">👁 @post.ViewCount</small>
+                    @if (post.PublishedAt.HasValue)
+                    {
+                        <small class="text-muted ms-2">📅 @post.PublishedAt.Value.ToString("yyyy-MM-dd")</small>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (totalPages > 1)
+    {
+        <nav>
+            <ul class="pagination">
+                @for (int i = 1; i <= totalPages; i++)
+                {
+                    <li class="page-item @(i == page ? "active" : "")">
+                        <a class="page-link" asp-action="Posts" asp-route-page="@i" asp-route-search="@ViewBag.Search" asp-route-categoryId="@ViewBag.CategoryId" asp-route-blogId="@ViewBag.BlogId">@i</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    }
+
+    <p class="text-muted">共 @total 篇文章</p>
+</div>

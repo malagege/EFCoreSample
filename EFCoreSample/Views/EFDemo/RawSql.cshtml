@@ -1,0 +1,17 @@
+@{ViewData["Title"] = "原始 SQL";}
+<div class="container mt-4">
+    <h2>5. 原始 SQL (Raw SQL)</h2>
+    <a asp-action="Index" class="btn btn-outline-secondary mb-3">← 返回</a>
+    <div class="card mb-3">
+        <div class="card-header">FromSqlRaw (Rating >= 4)</div>
+        <div class="card-body">
+            <ul>@foreach(var b in (dynamic)ViewBag.Blogs){<li>@b.Name</li>}</ul>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header">FromSqlInterpolated (Rating >= 3)</div>
+        <div class="card-body">
+            <ul>@foreach(var b in (dynamic)ViewBag.Filtered){<li>@b.Name</li>}</ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+@{ViewData["Title"] = "擁有實體";}
+<div class="container mt-4">
+    <h2>10. 擁有實體 (Owned Entities)</h2>
+    <a asp-action="Index" class="btn btn-outline-secondary mb-3">← 返回</a>
+    @if(ViewBag.Post != null)
+    {
+        var post = (EFCoreSample.Models.Post)ViewBag.Post;
+        <div class="card mb-3">
+            <div class="card-header">Post: @post.Title</div>
+            <div class="card-body">
+                @if(post.Metadata != null)
+                {
+                    <p><strong>SEO 標題:</strong> @post.Metadata.SeoTitle</p>
+                    <p><strong>SEO 描述:</strong> @post.Metadata.SeoDescription</p>
+                    <p><strong>Featured Image:</strong> @post.Metadata.FeaturedImageUrl</p>
+                }
+                else
+                {
+                    <p>無 Metadata</p>
+                }
+            </div>
+        </div>
+    }
+    <div class="card mt-3">
+        <div class="card-header">說明</div>
+        <div class="card-body">
+            <p>PostMetadata 是 Post 的擁有實體 (Owned Entity)，其欄位直接存儲在 Posts 資料表中，而不是獨立的資料表。</p>
+        </div>
+    </div>
+</div>

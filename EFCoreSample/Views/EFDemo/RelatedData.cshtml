@@ -1,0 +1,36 @@
+@{ViewData["Title"] = "關聯資料載入";}
+<div class="container mt-4">
+    <h2>2. 關聯資料載入 (Loading Related Data)</h2>
+    <a asp-action="Index" class="btn btn-outline-secondary mb-3">← 返回</a>
+
+    <div class="card mb-3">
+        <div class="card-header">Eager Loading (Include Posts & Author)</div>
+        <div class="card-body">
+            @foreach(var b in (dynamic)ViewBag.BlogsWithPosts)
+            {
+                <p><strong>@b.Name</strong> (作者: @(b.Author?.Name ?? "無")) - @b.Posts.Count 篇文章</p>
+            }
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header">投影查詢 (避免 N+1)</div>
+        <div class="card-body">
+            <ul>
+            @foreach(var s in (dynamic)ViewBag.BlogSummaries)
+            {
+                <li>@s.Name - 文章數: @s.PostCount, 作者: @s.AuthorName</li>
+            }
+            </ul>
+        </div>
+    </div>
+    @if(ViewBag.ExplicitBlog != null)
+    {
+        <div class="card mb-3">
+            <div class="card-header">Explicit Loading</div>
+            <div class="card-body">
+                <p>部落格: @ViewBag.ExplicitBlog.Name</p>
+                <p>文章數 (explicit loaded): @ViewBag.ExplicitBlog.Posts.Count</p>
+            </div>
+        </div>
+    }
+</div>
