@@ -1,0 +1,101 @@
+@{
+    ViewData["Title"] = "EFCore 功能展示";
+}
+
+<div class="container mt-4">
+    <h1>📖 EFCore 功能展示</h1>
+    <p class="text-muted">點擊以下連結查看各種 EFCore 功能的實際示範</p>
+
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">1. 基本查詢</h5>
+                    <p class="card-text">Where、OrderBy、Skip/Take、Select 等基本 LINQ 查詢</p>
+                    <a asp-action="BasicQuerying" class="btn btn-primary">查看示範</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">2. 關聯資料載入</h5>
+                    <p class="card-text">Eager Loading (Include)、Explicit Loading、投影查詢</p>
+                    <a asp-action="RelatedData" class="btn btn-primary">查看示範</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">3. 資料儲存</h5>
+                    <p class="card-text">Add、Update、Delete、AddRange 的 CRUD 操作</p>
+                    <a asp-action="SavingData" class="btn btn-primary">查看示範</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">4. 交易</h5>
+                    <p class="card-text">隱式交易、明確交易、BeginTransaction 使用方式</p>
+                    <a asp-action="Transactions" class="btn btn-primary">查看示範</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">5. 原始 SQL</h5>
+                    <p class="card-text">FromSqlRaw、ExecuteSqlRaw、FromSqlInterpolated</p>
+                    <a asp-action="RawSql" class="btn btn-primary">查看示範</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">6. 變更追蹤</h5>
+                    <p class="card-text">EntityState、AsNoTracking、ChangeTracker</p>
+                    <a asp-action="ChangeTracking" class="btn btn-primary">查看示範</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">7. 進階查詢</h5>
+                    <p class="card-text">GroupBy、Join、Any/All/Count、Sum/Max/Min</p>
+                    <a asp-action="AdvancedQuerying" class="btn btn-primary">查看示範</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">8. 編譯查詢</h5>
+                    <p class="card-text">EF.CompileAsyncQuery 提升查詢效能</p>
+                    <a asp-action="CompiledQueries" class="btn btn-primary">查看示範</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">9. 值轉換</h5>
+                    <p class="card-text">Enum 存為字串等值轉換設定</p>
+                    <a asp-action="ValueConversions" class="btn btn-primary">查看示範</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">10. 擁有實體</h5>
+                    <p class="card-text">Owned Entities - PostMetadata 嵌入在 Post 資料表</p>
+                    <a asp-action="OwnedEntities" class="btn btn-primary">查看示範</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

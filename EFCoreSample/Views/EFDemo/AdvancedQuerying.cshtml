@@ -1,0 +1,26 @@
+@{ViewData["Title"] = "進階查詢";}
+<div class="container mt-4">
+    <h2>7. 進階查詢 (Advanced Querying)</h2>
+    <a asp-action="Index" class="btn btn-outline-secondary mb-3">← 返回</a>
+    <div class="card mb-3">
+        <div class="card-header">GroupBy (文章依狀態分組)</div>
+        <div class="card-body">
+            <ul>@foreach(var g in (dynamic)ViewBag.PostsByStatus){<li>@g.Status: @g.Count 篇</li>}</ul>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header">統計 (Any/Count/Sum/Max)</div>
+        <div class="card-body">
+            <p>有已發佈文章: @ViewBag.HasPublished</p>
+            <p>已發佈文章數: @ViewBag.PublishedCount</p>
+            <p>總瀏覽次數: @ViewBag.TotalViews</p>
+            <p>最高瀏覽次數: @ViewBag.MaxViews</p>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header">Join (Blog + Post)</div>
+        <div class="card-body">
+            <ul>@foreach(var j in (dynamic)ViewBag.BlogPostJoin){<li>@j.BlogName → @j.PostTitle</li>}</ul>
+        </div>
+    </div>
+</div>

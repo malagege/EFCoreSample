@@ -1,0 +1,36 @@
+@{ViewData["Title"] = "基本查詢";}
+<div class="container mt-4">
+    <h2>1. 基本查詢 (Basic Querying)</h2>
+    <a asp-action="Index" class="btn btn-outline-secondary mb-3">← 返回</a>
+
+    <div class="card mb-3">
+        <div class="card-header">所有部落格 (ToListAsync)</div>
+        <div class="card-body">
+            <ul>@foreach(var b in (dynamic)ViewBag.AllBlogs){<li>@b.Name (Rating: @b.Rating)</li>}</ul>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header">高評分部落格 (Where Rating >= 4)</div>
+        <div class="card-body">
+            <ul>@foreach(var b in (dynamic)ViewBag.HighRated){<li>@b.Name</li>}</ul>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header">排序結果 (OrderByDescending Rating, ThenBy Name)</div>
+        <div class="card-body">
+            <ul>@foreach(var b in (dynamic)ViewBag.Sorted){<li>@b.Name (Rating: @b.Rating)</li>}</ul>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header">分頁結果 (Skip/Take, Page 1, Size 2)</div>
+        <div class="card-body">
+            <ul>@foreach(var b in (dynamic)ViewBag.Paged){<li>@b.Name</li>}</ul>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header">投影查詢 (Select anonymous type)</div>
+        <div class="card-body">
+            <ul>@foreach(var b in (dynamic)ViewBag.Projected){<li>ID=@b.Id, Name=@b.Name, Rating=@b.Rating</li>}</ul>
+        </div>
+    </div>
+</div>

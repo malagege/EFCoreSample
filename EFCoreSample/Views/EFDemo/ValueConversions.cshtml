@@ -1,0 +1,17 @@
+@{ViewData["Title"] = "值轉換";}
+<div class="container mt-4">
+    <h2>9. 值轉換 (Value Conversions)</h2>
+    <a asp-action="Index" class="btn btn-outline-secondary mb-3">← 返回</a>
+    <div class="card mb-3">
+        <div class="card-header">PostStatus Enum 存為字串</div>
+        <div class="card-body">
+            <ul>@foreach(var p in (dynamic)ViewBag.Posts){<li>@p.Title → 狀態: @p.Status</li>}</ul>
+        </div>
+    </div>
+    <div class="card mt-3">
+        <div class="card-header">說明</div>
+        <div class="card-body">
+            <p>在 OnModelCreating 中設定 <code>.HasConversion&lt;string&gt;()</code>，EF Core 會自動在存取時進行 Enum ↔ String 的轉換。</p>
+        </div>
+    </div>
+</div>
